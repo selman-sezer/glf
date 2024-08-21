@@ -1,5 +1,5 @@
-```markdown
-# AsyncCaller
+
+# 1 - AsyncCaller
 
 AsyncCaller is a TypeScript library for making asynchronous calls with retry, concurrency, and rate limiting capabilities.
 
@@ -96,16 +96,15 @@ asyncCaller.call(fetchData)
 
 - **concurrency**: The maximum number of concurrent tasks allowed. Default is 5.
 
-## License
-
-This project is licensed under the MIT License.
-```
 
 
 
 
-```markdown
-# TokenBucket
+---
+---
+---
+
+# 2 -  TokenBucket
 
 TokenBucket is a TypeScript library implementing a token bucket algorithm for rate limiting.
 
@@ -202,4 +201,3 @@ Forces the bucket to wait until the specified amount of milliseconds have passed
 ## License
 
 This project is licensed under the MIT License.
-```
