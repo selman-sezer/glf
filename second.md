@@ -167,6 +167,23 @@ async function makeRequest() {
 makeRequest();
 ```
 
+### Waiting for enough Token to be in Tokenbucket
+
+```typescript
+import { TokenBucket } from 'token-bucket';
+
+const tokenBucket = new TokenBucket({
+  capacity: 20,
+  fillPerWindow: 5,
+  windowInMs: 2000,
+}, true);
+
+// This while loop waits for tokenBucket to asynchronously consumes the specified number of tokens.
+let numberOfTokensToBeConsumed = 5;
+while (!await tokenBucket.consumeAsync(numberOfTokensToBeConsumed));
+```
+
+
 ## Configuration Options
 
 ### TokenBucketOptions
