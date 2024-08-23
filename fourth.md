@@ -66,7 +66,7 @@ const tokenBucket = new TokenBucket({
   windowInMs: 2000,
 }, true);
 
-// This while loop waits for tokenBucket to asynchronously consumes the specified number of tokens.
+// This while loop waits for tokenBucket to asynchronously consumes the specified number of tokens, 5 in this case.
 let numberOfTokensToBeConsumed = 5;
 while (!await tokenBucket.consumeAsync(numberOfTokensToBeConsumed));
 ```
@@ -80,6 +80,23 @@ while (!await tokenBucket.consumeAsync(numberOfTokensToBeConsumed));
 - **fillPerWindow**: The number of tokens added to the bucket per window.
 - **windowInMs**: The size of the window in milliseconds.
 - **initialTokens**: The initial number of tokens in the bucket. Defaults to the capacity if not provided.
+```typescript
+/*
+capacity is set to 20, so bucket can hold maximum 20 tokens in a given moment.
+fillPerWindow is set to 2, so at each window 2 tokens will be put into the bucket.
+windowInMs is set to 1500.
+initialTokens is set to 40, so initial number of tokens in the bucket is no longer defaul value (i.e. capacity which is set to 20).
+*/
+import { TokenBucket } from 'token-bucket';
+
+const tokenBucket = new TokenBucket({
+  capacity: 20,
+  fillPerWindow: 2,
+  windowInMs: 1500,
+  initialTokens: 40,
+});
+
+```
 
 ## Methods
 
