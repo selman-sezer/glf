@@ -1,11 +1,14 @@
 # 2 -  TokenBucket
 
 TokenBucket is a TypeScript library implementing a token bucket algorithm for rate limiting.
+It defines a class TokenBucket, which implements a rate-limiting mechanism commonly used in networking and API throttling. The idea behind a token bucket is that tokens are generated at a constant rate and stored in a "bucket." These tokens are consumed whenever an action is performed (e.g., a network request). If there aren't enough tokens in the bucket, the action must wait until tokens are replenished.
 
 ## Features
 
-- **Rate Limiting**: Control the rate of requests using a token bucket algorithm.
+- **Customizable Refill Rates**: Allows fine-tuning of bucket capacity, refill rate, and time windows.
 - **Verbose Logging**: Optional verbose logging for debugging and monitoring.
+
+
 
 ## Installation
 
