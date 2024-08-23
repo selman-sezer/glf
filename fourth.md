@@ -190,6 +190,43 @@ asyncCaller.call(fetchData)
   .catch(error => console.error(error));
 ```
 
+
+### Sending All Request Together
+```typescript
+/*
+With the help of async caller, you can completely transfer the rate limiting issue to the async caller function and send all requests at
+once with await Promise.all. async caller works in accordance with the given limits. Thanks to the async caller, your site can be used as
+quickly as possible within the specified rate limits.
+*/
+// Without async caller
+  for (const user of users) {
+    const userData = await fetch(https://www.somewebsite.com/fetchuserinfo/${user.id});
+    // do something with userData
+  }
+  // too slow, each request has to wait the previous one to complete.
+
+  // Without async caller
+  await Promise.all(users.map(async user => {
+    const userData = await fetch(https://www.somewebsite.com/fetchuserinfo/${user.id});
+    // do something with userData
+  }));
+  // sends all of them together, but will probably get rate limited.
+
+  // with async caller
+  const asyncCaller = new AsyncCaller({
+    tokenBucketOptions: {
+      capacity: 10,
+      fillPerWindow: 10,
+      windowInMs: 1000,
+    },
+  });
+  await Promise.all(users.map(async user => {
+    const userData = await asyncCaller.call(async () => fetch(https://www.somewebsite.com/fetchuserinfo/${user.id}));
+    // do something with userData
+  }));
+
+```
+
 ## Configuration Options
 
 ### TokenBucketOptions
