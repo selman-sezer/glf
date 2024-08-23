@@ -194,9 +194,10 @@ asyncCaller.call(fetchData)
 ### Sending All Request Together
 ```typescript
 /*
-With the help of async caller, you can completely transfer the rate limiting issue to the async caller function and send all requests at
-once with await Promise.all. async caller works in accordance with the given limits. Thanks to the async caller, your site can be used as
-quickly as possible within the specified rate limits.
+With the help of async caller, you can completely transfer the rate limiting issue to the async caller function and
+send all requests at once with await Promise.all.
+async caller works in accordance with the given limits.
+Thanks to the async caller, your site can be used as quickly as possible within the specified rate limits.
 */
 // Without async caller
   for (const user of users) {
