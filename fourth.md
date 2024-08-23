@@ -119,7 +119,9 @@ Stops the internal timer for refilling tokens.
 ### forceWaitUntilMilisecondsPassed(delayInMs: number): void
 
 Forces the bucket to wait until the specified amount of milliseconds have passed before refilling.
-The intented use of this method is the when the an AsyncCaller object which is explained below receives an 429 Too Many Requests error. The related methods of the AsyncCaller class are implemented accordingly. We advice not to use it anywhere else unless it is absolutely necessary.
+The intented use of this method is the when the an AsyncCaller object which is explained below receives an 429 Too Many Requests error. 
+The related methods of the AsyncCaller class are implemented accordingly. We advice not to use this method anywhere else
+unless it is absolutely necessary.
 
 
 ---
