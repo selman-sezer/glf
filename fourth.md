@@ -191,7 +191,7 @@ asyncCaller.call(fetchData)
 ```
 
 
-### Sending All Request Together
+### Sending All Requests At Once
 ```typescript
 /*
 With the help of async caller, you can completely transfer the rate limiting issue to the async caller function and
@@ -239,12 +239,43 @@ Thanks to the async caller, your site can be used as quickly as possible within 
 
 ### RetryOptions
 
-- **maxRetries**: The maximum number of retries. Default is 3.
+- **maxRetries**: The maximum number of retries. Default is 3. The maxRetries is the number of the extra tries.
+For example if maxRetries is set to 10, the total number of tries would be 11 with the first try.
 - **minDelayInMs**: The minimum delay between retries in milliseconds. Default is 1000.
 - **maxDelayInMs**: The maximum delay between retries in milliseconds. Default is 10000.
 - **backoffFactor**: The factor by which the delay should be increased after each retry. Default is 2.
+```typescript
+/* In this example maxRetries is set to 1. It means that in total it will be tried two times (i.e. once for first try, once for retry.
+  The minimum delay between retries (i.e. minDelayInMs) is set to 100 milliseconds.
+  The maximum delay between retries (i.e. maxDelayInMs) is set to 10000 milliseconds.
+  backoffFactor is set to 3, so the delay will be increased 3 times after each retry.
+*/
+import { AsyncCaller } from 'async-caller';
 
+const asyncCaller = new AsyncCaller({
+  retryOptions: {
+    maxRetries: 1,
+    minDelayInMs: 100,
+    maxDelayInMs: 10000,
+    backoffFactor: 3,
+  },
+});
+```
 ### Concurrency
 
 - **concurrency**: The maximum number of concurrent tasks allowed. Default is 5.
+```typescript
+/* concurrency is set to 10. So maximum 10 tasks can be handles concurrently.
+*/
+import { AsyncCaller } from 'async-caller';
 
+const asyncCaller = new AsyncCaller({
+    retryOptions: {
+    maxRetries: 10,
+    minDelayInMs: 300,
+    maxDelayInMs: 15000,
+    backoffFactor: 2,
+  },
+  concurrency: 10,
+});
+```
