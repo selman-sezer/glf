@@ -26,13 +26,30 @@ yarn add async-caller
 
 ## Usage
 
-### Get Started
+### Quick Start
 
 ```typescript
 import { AsyncCaller } from 'async-caller';
 
 // AsyncCaller constructor takes two optional parameters, tokenBucketOptions and retryOptions
 // If they are not given as parameters, the default values (defined in the module) will be used.
+
+const asyncCaller = new AsyncCaller();
+
+async function fetchData() {
+  // Your async function logic
+}
+
+asyncCaller.call(fetchData)
+  .then(result => console.log(result))
+  .catch(error => console.error(error));
+```
+
+### Set the tokenBucketOptions
+
+```typescript
+import { AsyncCaller } from 'async-caller';
+
 // Here we only specify tokenBucketOptions.
 const asyncCaller = new AsyncCaller({
   tokenBucketOptions: {
@@ -118,6 +135,16 @@ Thanks to the async caller, your site can be used as quickly as possible within 
     // do something with userData
   }));
 
+```
+
+### Verbose Logging
+
+When verbose logging is enabled, you will see detailed logs about the internal operations of the `AsyncCaller`. For example:
+
+```plaintext
+AsyncCaller: Running task... Concurrency: (1 / 10) (Queue length: 0)
+AsyncCaller: Too many requests detected.
+AsyncCaller: Max retries exceeded. Rejecting...
 ```
 
 ## Configuration Options
