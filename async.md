@@ -31,7 +31,8 @@ yarn add async-caller
 ```typescript
 import { AsyncCaller } from 'async-caller';
 
-// tokenBucketOptions and retryOptions are optional. If they are not given as parameters, the default values will be used.
+// AsyncCaller constructor takes two optional parameters, tokenBucketOptions and retryOptions
+// If they are not given as parameters, the default values (defined in the module) will be used.
 // Here we only specify tokenBucketOptions.
 const asyncCaller = new AsyncCaller({
   tokenBucketOptions: {
