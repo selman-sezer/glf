@@ -7,7 +7,7 @@ AsyncCaller is a TypeScript library for making asynchronous calls with retry, co
 - **Rate Limiting**: Control the rate of requests using a token bucket algorithm.
 - **Retry Mechanism**: Automatically retry failed requests with customizable retry options.
 - **Automatic Check For 429 Erros**:If the function sent to the async caller is a function called with fetch(), it automatically checks the incoming headers for 429 and sets the tokenbucket accordingly.
-- **Other Errors**: If the function sent to the async caller is fetch, it does not retry with error codes 400 and 500. (except 429)
+- **Other Errors**: If the function sent to the async caller is fetch, it does not retry with error codes between 400 and 500. (except 429)
 - **Concurrency Control**: Limit the number of concurrent tasks.
 
 ## Installation
