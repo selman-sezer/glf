@@ -31,6 +31,8 @@ yarn add async-caller
 ```typescript
 import { AsyncCaller } from 'async-caller';
 
+// tokenBucketOptions and retryOptions are optional. If they are not given as parameters, the default values will be used.
+// Here we only specify tokenBucketOptions.
 const asyncCaller = new AsyncCaller({
   tokenBucketOptions: {
     capacity: 10,
@@ -51,6 +53,8 @@ asyncCaller.call(fetchData)
 ### Set the retryOptions
 
 ```typescript
+// Instead of default options for retry we can set them ourselves.
+
 import { AsyncCaller } from 'async-caller';
 
 const asyncCaller = new AsyncCaller({
